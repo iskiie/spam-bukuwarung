@@ -15,16 +15,15 @@ function eksekusi($number){
             "method"                => "WA",
           );
 
-    $cekdata    = get_web_page("https://api.bukuwarung.com/api/v1/auth/otp/send", $datauser); //cek kelas
-    //print_r($cekdata);
-    //print_r($cekdata["content"]);
+    $cekdata    = get_web_page("https://api.bukuwarung.com/api/v1/auth/otp/send", $datauser);
+
     $dt = json_decode($cekdata["content"]);
     if (isset($dt->recipient)) {
         $msg = "$dt->message => $dt->recipient => delay 30 sec.\n";
     } else {
         $msg = "$dt->message => delay 30 sec.\n";
     }
-    
+
     echo "$msg";
     echo 'Sleep => 30';
     sleep(5);
@@ -42,9 +41,6 @@ function eksekusi($number){
     echo "Eksekusi kembali nomor => $number\n";
     eksekusi($number);
 }
-
-
-
 
 function get_web_page( $url, $fields )
 {   
