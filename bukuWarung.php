@@ -50,7 +50,6 @@ function get_web_page( $url, $fields )
     $heads[] = "X-APP-VERSION-CODE: 3739";
     $heads[] = "X-TIMEZONE: Asia/Jakarta";
     $heads[] = "Content-Type: application/json; charset\u003dUTF-8";
-    //$heads[] = "Content-Length: 127";
     $heads[] = "Host: api.bukuwarung.com";
     $heads[] = "Connection: Keep-Alive";
     $heads[] = "Accept-Encoding: gzip";
@@ -59,18 +58,18 @@ function get_web_page( $url, $fields )
     $field_string = json_encode($fields);
 
     $options = array(
-        CURLOPT_RETURNTRANSFER => true,     // return web page
-        CURLOPT_HEADER         => false,    // don't return headers
-        CURLOPT_FOLLOWLOCATION => true,     // follow redirects
-        CURLOPT_ENCODING       => "",       // handle all encodings
-        CURLOPT_USERAGENT      => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36", // who am i
-        CURLOPT_AUTOREFERER    => true,     // set referer on redirect
-        CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
-        CURLOPT_TIMEOUT        => 120,      // timeout on response
-        CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
-        CURLOPT_HTTPHEADER     => $heads,       // stop after 10 redirects
-        CURLOPT_POSTFIELDS     => $field_string,       // stop after 10 redirects
-        CURLOPT_SSL_VERIFYPEER => false     // Disabled SSL Cert checks
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER         => false,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_ENCODING       => "",
+        CURLOPT_USERAGENT      => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36",
+        CURLOPT_AUTOREFERER    => true,
+        CURLOPT_CONNECTTIMEOUT => 120,
+        CURLOPT_TIMEOUT        => 120,
+        CURLOPT_MAXREDIRS      => 10,
+        CURLOPT_HTTPHEADER     => $heads,
+        CURLOPT_POSTFIELDS     => $field_string,
+        CURLOPT_SSL_VERIFYPEER => false
     );
 
     $ch      = curl_init( $url );
